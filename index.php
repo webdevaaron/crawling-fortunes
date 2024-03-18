@@ -142,14 +142,128 @@ if(count($data2) == 12){
         ]);
     
         $d = json_decode($chat);
-
         $name = $d->choices[0]->message->content;
 
         $stmt = $conn->prepare("INSERT INTO users (name) VALUES (:name)");
-
         $stmt->bindParam(':name', $name);
 
         if ($stmt->execute()) {
+            $sql = "INSERT INTO g5_write_fortune (wr_id, wr_num, wr_reply, wr_parent, wr_is_comment, wr_comment, wr_comment_reply, ca_name, wr_option, wr_subject, wr_content, wr_seo_title, wr_link1, wr_link2, wr_link1_hit, wr_link2_hit, wr_hit, wr_good, wr_nogood, mb_id, wr_password, wr_name, wr_email, wr_homepage, wr_datetime, wr_file, wr_last, wr_ip, wr_facebook_user, wr_twitter_user, wr_1, wr_2, wr_3, wr_4, wr_5, wr_6, wr_7, wr_8, wr_9, wr_10, as_type, as_img, as_extend, as_down, as_view, as_star_score, as_star_cnt, as_choice, as_choice_cnt, as_tag, as_thumb)
+            VALUES (:wr_id, :wr_num, :wr_reply, :wr_parent, :wr_is_comment, :wr_comment, :wr_comment_reply, :ca_name, :wr_option, :wr_subject, :wr_content, :wr_seo_title, :wr_link1, :wr_link2, :wr_link1_hit, :wr_link2_hit, :wr_hit, :wr_good, :wr_nogood, :mb_id, :wr_password, :wr_name, :wr_email, :wr_homepage, :wr_datetime, :wr_file, :wr_last, :wr_ip, :wr_facebook_user, :wr_twitter_user, :wr_1, :wr_2, :wr_3, :wr_4, :wr_5, :wr_6, :wr_7, :wr_8, :wr_9, :wr_10, :as_type, :as_img, :as_extend, :as_down, :as_view, :as_star_score, :as_star_cnt, :as_choice, :as_choice_cnt, :as_tag, :as_thumb)";
+            $stmt = $conn->prepare($sql);
+
+            $stmt->bindParam(':wr_id', $wr_id);
+            $stmt->bindParam(':wr_num', $wr_num);
+            $stmt->bindParam(':wr_reply', $wr_reply);
+            $stmt->bindParam(':wr_parent', $wr_parent);
+            $stmt->bindParam(':wr_is_comment', $wr_is_comment);
+            $stmt->bindParam(':wr_comment', $wr_comment);
+            $stmt->bindParam(':wr_comment_reply', $wr_comment_reply);
+            $stmt->bindParam(':ca_name', $ca_name);
+            $stmt->bindParam(':wr_option', $wr_option);
+            $stmt->bindParam(':wr_subject', $wr_subject);
+            $stmt->bindParam(':wr_content', $wr_content);
+            $stmt->bindParam(':wr_seo_title', $wr_seo_title);
+            $stmt->bindParam(':wr_link1', $wr_link1);
+            $stmt->bindParam(':wr_link2', $wr_link2);
+            $stmt->bindParam(':wr_link1_hit', $wr_link1_hit);
+            $stmt->bindParam(':wr_link2_hit', $wr_link2_hit);
+            $stmt->bindParam(':wr_hit', $wr_hit);
+            $stmt->bindParam(':wr_good', $wr_good);
+            $stmt->bindParam(':wr_nogood', $wr_nogood);
+            $stmt->bindParam(':mb_id', $mb_id);
+            $stmt->bindParam(':wr_password', $wr_password);
+            $stmt->bindParam(':wr_name', $wr_name);
+            $stmt->bindParam(':wr_email', $wr_email);
+            $stmt->bindParam(':wr_homepage', $wr_homepage);
+            $stmt->bindParam(':wr_datetime', $wr_datetime);
+            $stmt->bindParam(':wr_file', $wr_file);
+            $stmt->bindParam(':wr_last', $wr_last);
+            $stmt->bindParam(':wr_ip', $wr_ip);
+            $stmt->bindParam(':wr_facebook_user', $wr_facebook_user);
+            $stmt->bindParam(':wr_twitter_user', $wr_twitter_user);
+            $stmt->bindParam(':wr_1', $wr_1);
+            $stmt->bindParam(':wr_2', $wr_2);
+            $stmt->bindParam(':wr_3', $wr_3);
+            $stmt->bindParam(':wr_4', $wr_4);
+            $stmt->bindParam(':wr_5', $wr_5);
+            $stmt->bindParam(':wr_6', $wr_6);
+            $stmt->bindParam(':wr_7', $wr_7);
+            $stmt->bindParam(':wr_8', $wr_8);
+            $stmt->bindParam(':wr_9', $wr_9);
+            $stmt->bindParam(':wr_10', $wr_10);
+            $stmt->bindParam(':as_type', $as_type);
+            $stmt->bindParam(':as_img', $as_img);
+            $stmt->bindParam(':as_extend', $as_extend);
+            $stmt->bindParam(':as_down', $as_down);
+            $stmt->bindParam(':as_view', $as_view);
+            $stmt->bindParam(':as_star_score', $as_star_score);
+            $stmt->bindParam(':as_star_cnt', $as_star_cnt);
+            $stmt->bindParam(':as_choice', $as_choice);
+            $stmt->bindParam(':as_choice_cnt', $as_choice_cnt);
+            $stmt->bindParam(':as_tag', $as_tag);
+            $stmt->bindParam(':as_thumb', $as_thumb);
+            
+            // Set parameter values
+            $wr_id = 1;
+            $wr_num = -1;
+            $wr_reply = " ";
+            $wr_parent = 1;
+            $wr_is_comment = 0;
+            $wr_comment = 0;
+            $wr_comment_reply = " ";
+            $ca_name = " ";
+            $wr_option = "html1";
+            $wr_subject = "test";
+            $wr_content = $d->choices[0]->message->content;
+            $wr_seo_title = "test";
+            $wr_link1 = " ";
+            $wr_link2 = " ";
+            $wr_link1_hit = 0;
+            $wr_link2_hit = 0;
+            $wr_hit = 1;
+            $wr_good = 0;
+            $wr_nogood = 0;
+            $mb_id = "admin";
+            $wr_password = " ";
+            $wr_name = "오벳관리자";
+            $wr_email = "obet24@proton.me";
+            $wr_homepage = " ";
+            $wr_datetime = "2024-03-09 11:04:10";
+            $wr_file = 1;
+            $wr_last = "2024-03-09 11:04:10";
+            $wr_ip = "210.223.12.111";
+            $wr_facebook_user = " ";
+            $wr_twitter_user = " ";
+            $wr_1 = " ";
+            $wr_2 = " ";
+            $wr_3 = " ";
+            $wr_4 = " ";
+            $wr_5 = " ";
+            $wr_6 = " ";
+            $wr_7 = " ";
+            $wr_8 = " ";
+            $wr_9 = " ";
+            $wr_10 = " ";
+            $as_type = 0;
+            $as_img = 0;
+            $as_extend = 0;
+            $as_down = 0;
+            $as_view = 0;
+            $as_star_score = 0;
+            $as_star_cnt = 0;
+            $as_choice = 0;
+            $as_choice_cnt = 0;
+            $as_tag = " ";
+            $as_thumb = ".//data/file/fortune/03a043d5693f411f4b0f1b171e5d84dc_oNUf7vYE_40759a766aef32185b6531eeb8e2994651071d53.png";
+
+            try {
+                $stmt->execute();
+                echo "New record inserted successfully";
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+            
             echo $data['zodiac_sign'] ."-> New record created successfully <br>";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
